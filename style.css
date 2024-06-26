@@ -35,7 +35,6 @@ body {
   flex: 1;
   text-align: right;
   font-family: digital, sans-serif;
-  font-size: 50px;
   src: url('https://www.1001fonts.com/digital-7-font.html');
   display: flex;
   justify-content: flex-end;
@@ -93,4 +92,16 @@ button:active {
 
 #equals {
   flex: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  #displayText {
+    font-size: 60px;
+  }
+  #calculator {
+    width: 100%;
+  }
+  button {
+    margin: 10px;
+  }
 }
