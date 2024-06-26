@@ -183,6 +183,8 @@ calculator.addEventListener("click", (event) =>{
         operators[0] = "/";
         string1 = shortenString(string1);
         display.textContent = string1;
+      } else if (string1.length<1){
+        console.log("No first value")
       } else {
         operators[0] = "/";
       }
@@ -197,6 +199,8 @@ calculator.addEventListener("click", (event) =>{
         operators[0] = "*";
         string1 = shortenString(string1);
         display.textContent = string1;
+      } else if (string1.length<1){
+        console.log("No first value")
       } else {
         operators[0] = "*";
       }
@@ -211,6 +215,8 @@ calculator.addEventListener("click", (event) =>{
         operators[0] = "+";
         string1 = shortenString(string1);
         display.textContent = string1;
+      } else if (string1.length<1){
+        console.log("No first value")
       } else {
         operators[0] = "+";
       }
@@ -225,6 +231,8 @@ calculator.addEventListener("click", (event) =>{
         operators[0] = "-";
         string1 = shortenString(string1);
         display.textContent = string1;
+      } else if (string1.length<1){
+        console.log("No first value")
       } else {
         operators[0] = "-";
       }
@@ -298,11 +306,11 @@ calculator.addEventListener("click", (event) =>{
         operators[0] = "%";
         string1 = shortenString(string1);
         display.textContent = string1;
+      } else if (string1.length < 1){
+        console.log("No first value");
       } else {
         operators[0] = "%";
       }
       break;
   }
-  console.log(string1);
-  console.log(string2);
 })
