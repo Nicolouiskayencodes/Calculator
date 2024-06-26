@@ -162,7 +162,7 @@ calculator.addEventListener("click", (event) =>{
       break;
     case "divide" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -175,7 +175,7 @@ calculator.addEventListener("click", (event) =>{
       break;
     case "multiply" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -188,7 +188,7 @@ calculator.addEventListener("click", (event) =>{
       break;
     case "add" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -201,7 +201,7 @@ calculator.addEventListener("click", (event) =>{
       break;
     case "subtract" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -214,7 +214,7 @@ calculator.addEventListener("click", (event) =>{
       break;
     case "equals" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -230,14 +230,45 @@ calculator.addEventListener("click", (event) =>{
       display.textContent = "";
       break;
     case "backspace" :
-      console.log("C");
+      if (operators[0] === "=") {
+        string1="";
+        operators.pop();
+        display.textContent = string1;
+      } else if (operators[0]) {
+        string2 = string2.slice(0,-1);
+        display.textContent = string2;
+      } else {
+        string1 = string1.slice(0,-1);
+        display.textContent = string1;
+      }
       break;
     case "decimal" :
-      console.log(".")
+      if (operators[0] === "=") {
+        string1="";
+        operators.pop();
+        string1 += "0.";
+        display.textContent = string1;
+      } else if (operators[0]) {
+          if (string2.length > 0) {
+            string2 += ".";
+            display.textContent = string2;
+          } else {
+            string2 += "0.";
+            display.textContent = string2;
+          }
+      } else {
+        if (string1.length > 0) {
+          string1 += ".";
+          display.textContent = string1;
+        } else {
+          string1 += "0.";
+          display.textContent = string1;
+        }
+      }
       break;
     case "remainder" :
       if (operators[0] && string2.length > 0) {
-        let value = operate(parseInt(string1),operators[0],parseInt(string2));
+        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
         console.log(value);
         string1 = "" + value;
         string2 = "";
@@ -249,4 +280,6 @@ calculator.addEventListener("click", (event) =>{
       }
       break;
   }
+  console.log(string1);
+  console.log(string2);
 })
