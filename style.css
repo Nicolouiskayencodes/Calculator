@@ -102,6 +102,7 @@ button:active {
   }
   #displayText {
     font-size: 60px;
+    margin-bottom: 10px;
   }
   #calculator {
     width: 100%;
