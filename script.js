@@ -29,7 +29,7 @@ function operate(val1, operator, val2) {
 
 function shortenString(numstring) {
   if (numstring.length > 7) {
-    return Number.parseFloat(numstring).toExponential(7);sh
+    return Number.parseFloat(numstring).toExponential(7);
   } else {
     return numstring;
   }
