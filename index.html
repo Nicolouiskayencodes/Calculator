@@ -10,36 +10,40 @@
 <body>
   <div id="calculator">
     <div class="row">
-      <div id="display"></div>
+      <div id="display"><span>14087</span></div>
     </div>
     <div class="row">
       <button id="ac">AC</button>
       <button id="backspace">C</button>
       <button id="remainder">%</button>
-      <button id="divide">÷</button>
+      <button class="operator" id="divide">÷</button>
     </div>
     <div class="row">
       <button id="seven">7</button>
       <button id="eight">8</button>
       <button id="nine">9</button>
-      <button id="multiply">x</button>
+      <button class="operator" id="multiply">x</button>
     </div>
     <div class="row">
       <button id="four">4</button>
       <button id="five">5</button>
       <button id="six">6</button>
-      <button id="subtract">-</button>
+      <button class="operator" id="subtract">-</button>
     </div>
     <div class="row">
       <button id="three">3</button>
       <button id="two">2</button>
       <button id="one">1</button>
-      <button id="add">+</button>
+      <button class="operator" id="add">+</button>
     </div>
     <div class="row">
-      <button id="decimal">.</button>
-      <button id="zero">0</button>
-      <button id="equals">=</button>
+      <div id="left">
+        <button id="decimal">.</button>
+        <button id="zero">0</button>
+      </div>
+      <div id="right">
+        <button class="operator" id="equals">=</button>
+      </div>
     </div>
   </div>
 </body>
