@@ -7,18 +7,31 @@ let display = document.querySelector("#displayText");
 
 function operate(val1, operator, val2) {
   if (operator === "+") {
-    return val1 + val2;
+    let x = val1 + val2;
+    return parseFloat(x.toFixed(5));
   } else if (operator === "-") {
-    return val1 - val2;
+    let x = val1 - val2;
+    return parseFloat(x.toFixed(5));
   } else if (operator === "*") {
-    return val1 * val2;
+    let x = val1 * val2;
+    return parseFloat(x.toFixed(5));
   } else if (operator === "/"){
-    return val1 / val2;
+    let x = val1 / val2;
+    return parseFloat(x.toFixed(5));
   } else if (operator === "%"){
-    return (val1 % val2);
+    let x = (val1 % val2);
+    return parseFloat(x.toFixed(5));
   } else {
     alert("error");
     return;
+  }
+}
+
+function shortenString(numstring) {
+  if (numstring.length > 10) {
+    return Number.parseFloat(numstring).toExponential(7);sh
+  } else {
+    return numstring;
   }
 }
 
@@ -168,6 +181,7 @@ calculator.addEventListener("click", (event) =>{
         string2 = "";
         operators.pop();
         operators[0] = "/";
+        string1 = shortenString(string1);
         display.textContent = string1;
       } else {
         operators[0] = "/";
@@ -181,6 +195,7 @@ calculator.addEventListener("click", (event) =>{
         string2 = "";
         operators.pop();
         operators[0] = "*";
+        string1 = shortenString(string1);
         display.textContent = string1;
       } else {
         operators[0] = "*";
@@ -194,6 +209,7 @@ calculator.addEventListener("click", (event) =>{
         string2 = "";
         operators.pop();
         operators[0] = "+";
+        string1 = shortenString(string1);
         display.textContent = string1;
       } else {
         operators[0] = "+";
@@ -207,6 +223,7 @@ calculator.addEventListener("click", (event) =>{
         string2 = "";
         operators.pop();
         operators[0] = "-";
+        string1 = shortenString(string1);
         display.textContent = string1;
       } else {
         operators[0] = "-";
@@ -219,6 +236,7 @@ calculator.addEventListener("click", (event) =>{
         string1 = "" + value;
         string2 = "";
         operators.pop();
+        string1 = shortenString(string1);
         display.textContent = string1;
         operators[0] = "=";
       }
@@ -249,7 +267,9 @@ calculator.addEventListener("click", (event) =>{
         string1 += "0.";
         display.textContent = string1;
       } else if (operators[0]) {
-          if (string2.length > 0) {
+          if (string2.includes(".")) {
+            console.log("No extra decimals")
+          } else if (string2.length > 0) {
             string2 += ".";
             display.textContent = string2;
           } else {
@@ -257,7 +277,9 @@ calculator.addEventListener("click", (event) =>{
             display.textContent = string2;
           }
       } else {
-        if (string1.length > 0) {
+        if (string1.includes(".")) {
+          console.log("No extra decimals")
+        } else if (string1.length > 0) {
           string1 += ".";
           display.textContent = string1;
         } else {
@@ -274,6 +296,7 @@ calculator.addEventListener("click", (event) =>{
         string2 = "";
         operators.pop();
         operators[0] = "%";
+        string1 = shortenString(string1);
         display.textContent = string1;
       } else {
         operators[0] = "%";
