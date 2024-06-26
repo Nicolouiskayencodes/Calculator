@@ -20,7 +20,7 @@ function operate(val1, operator, val2) {
     return parseFloat(x.toFixed(5));
   } else if (operator === "%"){
     let x = (val1 % val2);
-    return parseFloat(x.toFixed(5));
+    return parseFloat(x.toFixed(7));
   } else {
     alert("error");
     return;
@@ -28,7 +28,7 @@ function operate(val1, operator, val2) {
 }
 
 function shortenString(numstring) {
-  if (numstring.length > 10) {
+  if (numstring.length > 7) {
     return Number.parseFloat(numstring).toExponential(7);sh
   } else {
     return numstring;
