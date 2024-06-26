@@ -67,6 +67,12 @@ button {
   border-color: grey;
   background-color: grey;
 }
+button:hover {
+  filter: brightness(1.25);
+}
+button:active {
+  filter: brightness(0.75);
+}
 
 .operator {
   background-color: orange;
