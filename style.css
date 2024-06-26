@@ -111,3 +111,27 @@ button:active {
     margin: 10px;
   }
 }
+
+@media only screen and (max-device-height: 600px) 
+                   and (orientation: landscape) {
+  button {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  #display {
+    margin: 10px;
+    height: 20vh;
+  }
+
+  #calculator {
+    border-radius: 5px;
+  }
+  #left {margin-bottom: 5px;}
+  #right {margin-bottom: 5px;}
+  #displayText {
+    font-size: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
