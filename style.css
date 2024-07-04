@@ -69,10 +69,11 @@ button {
   background-color: grey;
 }
 button:hover {
-  filter: brightness(1.25);
+  filter: brightness(1.20);
 }
 button:active {
-  filter: brightness(0.75);
+  filter: brightness(0.80);
+  border-style: inset;
 }
 
 .operator {
