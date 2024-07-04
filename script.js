@@ -8,19 +8,19 @@ let display = document.querySelector("#displayText");
 function operate(val1, operator, val2) {
   if (operator === "+") {
     let x = val1 + val2;
-    return parseFloat(x.toFixed(5));
+    return parseFloat(x.toFixed(6));
   } else if (operator === "-") {
     let x = val1 - val2;
-    return parseFloat(x.toFixed(5));
+    return parseFloat(x.toFixed(6));
   } else if (operator === "*") {
     let x = val1 * val2;
-    return parseFloat(x.toFixed(5));
+    return parseFloat(x.toFixed(6));
   } else if (operator === "/"){
     let x = val1 / val2;
-    return parseFloat(x.toFixed(5));
+    return parseFloat(x.toFixed(6));
   } else if (operator === "%"){
     let x = (val1 % val2);
-    return parseFloat(x.toFixed(7));
+    return parseFloat(x.toFixed(6));
   } else {
     alert("error");
     return;
@@ -29,9 +29,45 @@ function operate(val1, operator, val2) {
 
 function shortenString(numstring) {
   if (numstring.length > 7) {
-    return Number.parseFloat(numstring).toExponential(7);
+    if (Number.parseFloat(numstring) > 1000000 || Number.parseFloat(numstring) < -1000000){
+      return Number.parseFloat(numstring).toExponential(7);
+    } else {
+      return parseFloat(numstring).toFixed(6);
+    }
   } else {
     return numstring;
+  }
+}
+
+function number(number) {
+  if (operators[0] === "=") {
+    string1="";
+    operators.pop();
+    string1 += number;
+    display.textContent = string1;
+  } else if (operators[0]) {
+    string2 += number;
+    display.textContent = string2;
+  } else {
+    string1 += number;
+    display.textContent = string1;
+  }
+}
+
+function operator(operator) {
+  if (operators[0] && string2.length > 0) {
+    let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
+    console.log(value);
+    string1 = "" + value;
+    string2 = "";
+    operators.pop();
+    operators[0] = opertator;
+    string1 = shortenString(string1);
+    display.textContent = string1;
+  } else if (string1.length<1){
+    console.log("No first value")
+  } else {
+    operators[0] = operator;
   }
 }
 
@@ -39,130 +75,31 @@ calculator.addEventListener("click", (event) =>{
   let target = event.target;
   switch(target.id) {
     case "one" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "1";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "1";
-        display.textContent = string2;
-      } else {
-        string1 += "1";
-        display.textContent = string1;
-      }
+      number("1");
       break;
     case "two" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "2";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "2";
-        display.textContent = string2;
-      } else {
-        string1 += "2";
-        display.textContent = string1;
-      }
+      number("2");
       break;
     case "three" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "3";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "3";
-        display.textContent = string2;
-      } else {
-        string1 += "3";
-        display.textContent = string1;
-      }
+      number("3");
       break;
     case "four" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "4";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "4";
-        display.textContent = string2;
-      } else {
-        string1 += "4";
-        display.textContent = string1;
-      }
+      number("4");
       break;
     case "five" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "5";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "5";
-        display.textContent = string2;
-      } else {
-        string1 += "5";
-        display.textContent = string1;
-      }
+      number("5");
       break;
     case "six" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "6";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "6";
-        display.textContent = string2;
-      } else {
-        string1 += "6";
-        display.textContent = string1;
-      }
+      number("6");
       break;
     case "seven" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "7";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "7";
-        display.textContent = string2;
-      } else {
-        string1 += "7";
-        display.textContent = string1;
-      }
+      number("7");
       break;
     case "eight" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "8";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "8";
-        display.textContent = string2;
-      } else {
-        string1 += "8";
-        display.textContent = string1;
-      }
+      number("8");
       break;
     case "nine" :
-      if (operators[0] === "=") {
-        string1="";
-        operators.pop();
-        string1 += "9";
-        display.textContent = string1;
-      } else if (operators[0]) {
-        string2 += "9";
-        display.textContent = string2;
-      } else {
-        string1 += "9";
-        display.textContent = string1;
-      }
+      number("9");
       break;
     case "zero" :
       if (operators[0]) {
@@ -174,69 +111,20 @@ calculator.addEventListener("click", (event) =>{
       }
       break;
     case "divide" :
-      if (operators[0] && string2.length > 0) {
-        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
-        console.log(value);
-        string1 = "" + value;
-        string2 = "";
-        operators.pop();
-        operators[0] = "/";
-        string1 = shortenString(string1);
-        display.textContent = string1;
-      } else if (string1.length<1){
-        console.log("No first value")
-      } else {
-        operators[0] = "/";
-      }
+      operator("/");
       break;
     case "multiply" :
-      if (operators[0] && string2.length > 0) {
-        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
-        console.log(value);
-        string1 = "" + value;
-        string2 = "";
-        operators.pop();
-        operators[0] = "*";
-        string1 = shortenString(string1);
-        display.textContent = string1;
-      } else if (string1.length<1){
-        console.log("No first value")
-      } else {
-        operators[0] = "*";
-      }
+      operator("*");
       break;
     case "add" :
-      if (operators[0] && string2.length > 0) {
-        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
-        console.log(value);
-        string1 = "" + value;
-        string2 = "";
-        operators.pop();
-        operators[0] = "+";
-        string1 = shortenString(string1);
-        display.textContent = string1;
-      } else if (string1.length<1){
-        console.log("No first value")
-      } else {
-        operators[0] = "+";
-      }
+      operator("+");
       break;
     case "subtract" :
-      if (operators[0] && string2.length > 0) {
-        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
-        console.log(value);
-        string1 = "" + value;
-        string2 = "";
-        operators.pop();
-        operators[0] = "-";
-        string1 = shortenString(string1);
-        display.textContent = string1;
-      } else if (string1.length<1){
-        console.log("No first value")
-      } else {
-        operators[0] = "-";
-      }
+      operator("-");
       break;
+    case "remainder" :
+        operator("%");
+        break;
     case "equals" :
       if (operators[0] && string2.length > 0) {
         let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
@@ -294,22 +182,6 @@ calculator.addEventListener("click", (event) =>{
           string1 += "0.";
           display.textContent = string1;
         }
-      }
-      break;
-    case "remainder" :
-      if (operators[0] && string2.length > 0) {
-        let value = operate(parseFloat(string1),operators[0],parseFloat(string2));
-        console.log(value);
-        string1 = "" + value;
-        string2 = "";
-        operators.pop();
-        operators[0] = "%";
-        string1 = shortenString(string1);
-        display.textContent = string1;
-      } else if (string1.length < 1){
-        console.log("No first value");
-      } else {
-        operators[0] = "%";
       }
       break;
   }
